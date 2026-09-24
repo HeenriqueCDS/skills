@@ -1,0 +1,5 @@
+interface:
+  display_name: "Shape: System Design"
+  short_description: "Grill functional and non-functional requirements"
+policy:
+  allow_implicit_invocation: false
