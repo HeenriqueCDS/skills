@@ -1,0 +1,5 @@
+interface:
+  display_name: "Shape: Project"
+  short_description: "Which design stage to run next"
+policy:
+  allow_implicit_invocation: false
