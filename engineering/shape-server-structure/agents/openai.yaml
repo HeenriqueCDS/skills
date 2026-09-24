@@ -1,0 +1,5 @@
+interface:
+  display_name: "Shape: Server Structure"
+  short_description: "Grill modules, seams, and backend architecture"
+policy:
+  allow_implicit_invocation: false
