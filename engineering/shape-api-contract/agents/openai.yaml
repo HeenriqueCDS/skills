@@ -1,0 +1,5 @@
+interface:
+  display_name: "Shape: API Contract"
+  short_description: "Grill and write the HTTP API contract"
+policy:
+  allow_implicit_invocation: false
