@@ -1,0 +1,5 @@
+interface:
+  display_name: "Shape: Database Model"
+  short_description: "Grill and write the relational schema"
+policy:
+  allow_implicit_invocation: false
