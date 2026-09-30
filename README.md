@@ -5,6 +5,7 @@ Agent skills I use daily, grouped by what they're for. They follow the open [Age
 | Group | Skill | What it does |
 | --- | --- | --- |
 | [Engineering](#engineering-the-shape-chain) | `/shape-project` and four stages | Shape a backend before building it: requirements, API contract, database, server structure |
+| [Engineering](#engineering-http-probe) | `curl-e2e` | Probe a running HTTP API with curl and print a terminal table |
 | [Productivity](#productivity) | `write-like-henrique` | Draft and edit technical writing in my voice |
 
 ## Install
@@ -15,11 +16,12 @@ Everything:
 npx skills@latest add HeenriqueCDS/skills
 ```
 
-One group:
+A subset:
 
 ```bash
 npx skills@latest add HeenriqueCDS/skills -s shape-project shape-system-design shape-api-contract shape-database-model shape-server-structure
 npx skills@latest add HeenriqueCDS/skills -s write-like-henrique
+npx skills@latest add HeenriqueCDS/skills -s curl-e2e
 ```
 
 ## Engineering: the shape chain
@@ -83,6 +85,12 @@ Whimsical is optional. Without it, the Mermaid diagram is all you get.
 
 Each stage's `SKILL.md` holds the steps, the ordered interview branches, and the completion criterion. `BRANCHES.md` holds what to decide and the recommended default for each branch, with the primary sources behind them: ISO/IEC/IEEE 29148, OWASP ASVS 5.0, NIST SP 800-63B-4, Google AIP, RFC 9110 and 9457, the PostgreSQL docs, Ousterhout, Cockburn, and Evans. `TEMPLATE.md` is the shape of the doc the stage writes.
 
+## Engineering: HTTP probe
+
+### `curl-e2e`
+
+Probes a running HTTP API with curl. It reads this repo's contract and start command, sends one request per case, checks the side effect that case produced, and prints a terminal table: case, request, pass or fail, status, body length, and evidence. The agent picks it up when you ask for a curl check of a route or the side effect that route produced.
+
 ## Productivity
 
 ### `write-like-henrique`
@@ -99,7 +107,8 @@ engineering/
 ├── shape-system-design/      SKILL.md, FUNCTIONAL.md, NON-FUNCTIONAL.md, SPEC-TEMPLATE.md, NFR-TEMPLATE.md
 ├── shape-api-contract/       SKILL.md, BRANCHES.md, TEMPLATE.md
 ├── shape-database-model/     SKILL.md, BRANCHES.md, TEMPLATE.md
-└── shape-server-structure/   SKILL.md, BRANCHES.md, TEMPLATE.md
+├── shape-server-structure/   SKILL.md, BRANCHES.md, TEMPLATE.md
+└── curl-e2e/                 SKILL.md, scripts/table.py
 productivity/
 └── write-like-henrique/      SKILL.md, references/ (voice, formats, editorial checklist)
 ```

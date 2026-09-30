@@ -1,0 +1,5 @@
+interface:
+  display_name: "Curl E2E"
+  short_description: "Probe a running API with curl and print a table"
+policy:
+  allow_implicit_invocation: true
