@@ -5,7 +5,7 @@ description: Audit unit tests for low-value, AI-style tests (restating, change-d
 
 A test earns its upkeep when it states an input and checks the observable output: how the code reacts. Its expected value comes from an **oracle**, a source other than the code under test (the spec, a worked example, a known-good literal). A test that reads its answer off the code is a **change-detector**: red on every edit, red on no bug.
 
-The rule: test inputs and outputs, and leave alone what is explicit in the code. Hard-coded values, config literals and defaults, constants, enum values, lookup tables entry by entry, one-line DI token factories, framework or language behaviour, state only a fake computed: each of these is already its own specification. Henry's canonical examples: a recorder-config spec asserting the default timings, and an error-key spec restating a code→key table.
+The rule: test inputs and outputs, and leave alone what is explicit in the code. Hard-coded values, config literals and defaults, constants, enum values, lookup tables entry by entry, one-line DI token factories, framework or language behaviour, state only a fake computed: each of these is already its own specification. Canonical examples: a recorder-config spec asserting the default timings, and an error-key spec restating a code→key table.
 
 The red question, asked of every test: **what one-line change to production code would make this fail usefully?** No answer means it is never red.
 
