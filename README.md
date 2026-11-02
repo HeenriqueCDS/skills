@@ -6,6 +6,7 @@ Agent skills I use daily, grouped by what they're for. They follow the open [Age
 | --- | --- | --- |
 | [Engineering](#engineering-the-shape-chain) | `/shape-project` and four stages | Shape a backend before building it: requirements, API contract, database, server structure |
 | [Engineering](#engineering-http-probe) | `curl-e2e` | Probe a running HTTP API with curl and print a terminal table |
+| [Engineering](#engineering-test-audit) | `test-audit` | Find low-value unit tests and prune them when asked |
 | [Productivity](#productivity) | `write-like-henrique` | Draft and edit technical writing in my voice |
 
 ## Install
@@ -22,6 +23,7 @@ A subset:
 npx skills@latest add HeenriqueCDS/skills -s shape-project shape-system-design shape-api-contract shape-database-model shape-server-structure
 npx skills@latest add HeenriqueCDS/skills -s write-like-henrique
 npx skills@latest add HeenriqueCDS/skills -s curl-e2e
+npx skills@latest add HeenriqueCDS/skills -s test-audit
 ```
 
 ## Engineering: the shape chain
@@ -91,6 +93,16 @@ Each stage's `SKILL.md` holds the steps, the ordered interview branches, and the
 
 Probes a running HTTP API with curl. It reads this repo's contract and start command, sends one request per case, checks the side effect that case produced, and prints a terminal table: case, request, pass or fail, status, body length, and evidence. The agent picks it up when you ask for a curl check of a route or the side effect that route produced.
 
+## Engineering: test audit
+
+### `test-audit`
+
+Audits unit tests for the low-value kind AI tends to write: tests that restate a config default or a lookup table, change-detectors that read their expected value off the code, and tests that can never go red. Every test gets one verdict (keep, delete, merge, or rewrite) with the smell and `file:line` behind it, and the audit asks of each one what one-line change to production code would make it fail usefully. It reports a table per spec file and stops there unless you ask it to apply.
+
+When applying, every rewritten assertion has to fail once against a deliberately broken copy of the code before it's trusted, and the code is restored byte for byte afterwards. Large suites fan out one sub-agent per folder, and the skill can join a `code-review` run as a third **Tests** axis when the diff touches specs.
+
+`SMELLS.md` lists the ten smells with how to spot each, `KEEPERS.md` lists tests that look deletable but stay, and `APPLYING.md` covers the edits and the mutation proof. The agent picks it up when you ask to audit, prune, or clean up specs.
+
 ## Productivity
 
 ### `write-like-henrique`
@@ -108,7 +120,8 @@ engineering/
 ├── shape-api-contract/       SKILL.md, BRANCHES.md, TEMPLATE.md
 ├── shape-database-model/     SKILL.md, BRANCHES.md, TEMPLATE.md
 ├── shape-server-structure/   SKILL.md, BRANCHES.md, TEMPLATE.md
-└── curl-e2e/                 SKILL.md, scripts/table.py
+├── curl-e2e/                 SKILL.md, scripts/table.py
+└── test-audit/               SKILL.md, SMELLS.md, KEEPERS.md, APPLYING.md, agents/openai.yaml
 productivity/
 └── write-like-henrique/      SKILL.md, references/ (voice, formats, editorial checklist)
 ```
